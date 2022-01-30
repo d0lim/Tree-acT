@@ -6,6 +6,7 @@ import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import App from "./components/App";
 import rootReducer from "./module";
+import { ChakraProvider } from "@chakra-ui/react";
 
 // vscode.postMessage({ command: "init" });
 
@@ -15,9 +16,11 @@ const store = createStore(rootReducer, composeEnhancers());
 
 ReactDOM.render(
   <Provider store={store}>
-    <StylesProvider injectFirst>
-      <App />
-    </StylesProvider>
+    <ChakraProvider>
+      <StylesProvider injectFirst>
+        <App />
+      </StylesProvider>
+    </ChakraProvider>
   </Provider>,
   document.getElementById("root")
 );
